@@ -1,0 +1,15 @@
+{
+    "name": "h-mat/blog",
+    "autoload": {
+        "psr-4": {
+            "Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Huot Mathieu",
+            "email": "mathieuu@gmail.com"
+        }
+    ],
+    "require": {}
+}
