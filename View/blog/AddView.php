@@ -5,12 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <?php
-   
-        if(isset($postObjet)){
-            echo '<title>'. $postObjet->title.'</title>';
-        }
-    ?>
+    
 
     <link href="./css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,9 +33,10 @@
             
             <?php 
                 if(isset($postObjet)){
-                    echo '<h2>'. $postObjet->title.'</h2>';
-                    echo '<div>'. $postObjet->chapo.'</div>'; 
-                    echo '<div>'.$postObjet->dateCreation->format("Y-M-d H:i:s").'</div>';
+                    echo '<h2>'. $postObjet->getTitle().'</h2>';
+                    echo '<div>'. $postObjet->getChapo().'</div>';
+                    echo '<div>'. $postObjet->getComment().'</div>';  
+                    echo '<div>'.$postObjet->getDateCreation()->format("Y-M-d H:i:s").'</div>';
                 }
             ?>
             <form method="POST" action="index.php?action=add"> 
@@ -52,6 +48,10 @@
                 <div class="mb-3">
                     <label for="chapo" class="form-label">Chapo</label>
                     <input type="text" class="form-control" id="chapo" name="chapo" >
+                </div>
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comment</label>
+                    <input type="text" class="form-control" id="comment" name="comment" >
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
 

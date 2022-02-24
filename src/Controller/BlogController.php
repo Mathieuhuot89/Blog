@@ -20,17 +20,25 @@ class BlogController extends Controller
         } */
         $manager = $this->managers->getManager("Blog");
         $posts = $manager->getList();
-        var_dump($posts);
+       // var_dump($posts);
     }
 
 
     public function add()
     {   
-        
-        $manager = $this->managers->getManager("Blog");
+         
+        $blogManager = $this->managers->getManager("Blog");
+
         if(isset($_POST['title']) && isset($_POST['chapo'])){
-            $postObjet = new Post($_POST['title'], $_POST['chapo'], 'Bonjour', new DateTime('2022-02-16'));
-            $manager->add($postObjet);
+           /* $postObjet = new Post($_POST['title'], $_POST['chapo'], $_POST['comment'], new DateTime('2022-02-16')); */
+           $postObjet = new Post();
+           $postObjet->setTitle($_POST['title']);
+           $postObjet->setChapo($_POST['chapo']);
+           $postObjet->setComment($_POST['comment']);
+           $postObjet->setDateCreation(new DateTime('2022-02-16'));
+        
+            $blogManager->add($postObjet); 
+            
         }
         require_once dirname(dirname(dirname(__FILE__))). DIRECTORY_SEPARATOR. 'View'. DIRECTORY_SEPARATOR. 'blog'.  DIRECTORY_SEPARATOR. 'AddView.php';
     }
