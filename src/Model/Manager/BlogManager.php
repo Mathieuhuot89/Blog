@@ -14,16 +14,16 @@ class BlogManager
         return $posts;
      }
 
-     public function add(Post $post)
+     public function add(Post $postObjet)
      {
         $pdo = PDOConnection::connect();
         $query = $pdo->prepare('INSERT INTO post (title, chapo, comment, date_creation) VALUES (:title, :chapo, :comment, :date_creation)' );
         $query->execute([
            
-           ':title' => $post->title, 
-           ':chapo' => $post->chapo,
-           ':comment' => $post->comment,
-           ':date_creation' => $post->dateCreation->format('y-m-d')
+           ':title' => $postObjet->getTitle(), 
+           ':chapo' => $postObjet->getChapo(),
+           ':comment' => $postObjet->getComment(),
+           ':date_creation' => $postObjet->getDateCreation()->format('Y-m-d'),
         ]);
      }
     
