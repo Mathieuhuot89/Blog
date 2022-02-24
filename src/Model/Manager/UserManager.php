@@ -12,7 +12,9 @@ class UserManager extends PDOConnection
         return $users;
 
     }
-
+    /**
+     * add user
+     */
     public function add(User $user){
         $query = $this->db->prepare('insert into user (username, password, email) values (:usernname, :password, :email)');
         $query->execute([
