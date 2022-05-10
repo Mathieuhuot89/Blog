@@ -1,8 +1,9 @@
 <?php
 
 namespace Blog\Model\Entity;
+use Blog\Core\Model;
 
-class User
+class User extends Model
 {
     protected $iduser;
     protected $username;

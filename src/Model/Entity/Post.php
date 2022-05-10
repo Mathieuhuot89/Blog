@@ -1,15 +1,17 @@
 <?php
 
 namespace Blog\Model\Entity;
+use Blog\Core\Model;
 
-class Post 
+class Post  extends Model
 {   
     // Properties / propriété
     protected $idpost;
     protected $title;
     protected $chapo;
-    protected $comment;
+    protected $content;
     protected $dateCreation;
+    protected $user;
     
     // get = récupérer les champs(properties) de l'entité
 
@@ -22,11 +24,14 @@ class Post
     public function getChapo(){
         return $this->chapo;
     }
-    public function getComment(){
-        return $this->comment;
+    public function getContent(){
+        return $this->content;
     }
     public function getDateCreation(){
         return $this->dateCreation;
+    }
+    public function getUser(){
+        return $this->user;
     }
 
     // set = insérer une donnée dans le champs(properties) de l'entité
@@ -40,11 +45,15 @@ class Post
     public function setChapo($chapo){
          $this->chapo = $chapo;
     }
-    public function setComment($comment){
-         $this->comment = $comment;
+    public function setContent($content){
+         $this->content = $content;
     }
     public function setDateCreation($dateCreation){
         $this->dateCreation = $dateCreation;
     }
+    public function setUser(User $user){
+        $this->user= $user;
+    }
 }
+
 

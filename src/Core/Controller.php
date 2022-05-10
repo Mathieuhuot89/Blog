@@ -2,12 +2,17 @@
 
 namespace Blog\Core;
 
-class Controller 
- {  
-     protected $managers;
-     public function __construct()
-     {
-        $this->managers = new Managers("PDO",PDOConnection::connect());
-        
-     }
- }
+use Blog\Core\PDOConnection;
+use Blog\Core\View;
+
+class Controller
+{
+    protected $view;
+    protected $managers;
+
+    public function __construct()
+    {
+        $this->view = new View();
+        $this->managers = new Managers();
+    }
+}
