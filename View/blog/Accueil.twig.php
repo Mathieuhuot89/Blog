@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="row mb-2">
+  <div class="row mb-2 blog">
     {% for post in posts %}
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -21,7 +21,7 @@
           <h3 class="mb-0 text-primary">{{ post.title }}</h3>
           <div class="mb-1 text-muted">{{ post.date_creation }}</div>
           <p class="card-text mb-auto">{{ post.chapo }}</p>
-          <a href="/post/view/{{ post.idpost }}" class="stretched-link">Continue reading</a>
+          <a href="/post/show/{{ post.idpost }}" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -32,6 +32,8 @@
     </div>
     {% endfor %}
   </div>
-  <a href="index.php?action=add"><button type="button" class="btn btn-link">AddPost</button> </a>
+  <div class="add_new_post">
+    <a href="/post/add"><button type="button" class="btn btn-link">Ajouter un post</button> </a>
+  </div>
 </main>
 {% endblock %}

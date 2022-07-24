@@ -15,29 +15,44 @@ class PostController extends Controller
     {
         $manager = $this->managers->getManager("Post");
         $posts = $manager->getList();
-        $this->view->show('blog/Accueil.twig.php', ['posts' => $posts]);
+        $this->view->show('blog/Accueil.twig.php', ['posts' => $posts, 'email' => $_SESSION['email'] ?? null]);
+    }
+
+    public function list()
+    {
+        $manager = $this->managers->getManager("Post");
+        $posts = $manager->getList();
+        $this->view->show('blog/Articles.twig.php', ['posts' => $posts, 'email' => $_SESSION['email'] ?? null]);
     }
 
     /**
      * View 1 post
      */
-    public function view($id)
+    public function show($id)
     {
         $manager = $this->managers->getManager("Post");
-        $post = $manager->getPost($id);
+        list($post, $comments) = $manager->getPost($id);
+        $userManager = $this->managers->getManager('User');
+        $author = $userManager->getUser($post['user_id']);
+      
+        
 
-        $this->view->show('blog/detail.twig.php', ['post' => $post[0]]);
+        $this->view->show('blog/detail.twig.php', ['post' => $post,'comments' =>$comments, 'author'=> $author]);
     }
 
     /**
      * Delete 1 post
      */
     public function delete($id)
-    {
+    {   
+        
         $manager = $this->managers->getManager("Post");
         $postArray = $manager->getPost($id);
         $post = new Post($postArray[0]);
+       
         $manager->delete($post);
+        
+        
     }
 
     /**
@@ -55,7 +70,7 @@ class PostController extends Controller
             $postObjet->setUser($user);
             $blogManager->add($postObjet);
         }
-        require_once dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'blog' .  DIRECTORY_SEPARATOR . 'AddView.php';
+        $this->view->show('blog/add.twig.php', []);
     }
 
     /**
@@ -75,7 +90,8 @@ class PostController extends Controller
             $id = $postObjet->getIdPost();
         }
         $post = $manager->getPost($id);
-        require_once dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'blog' .  DIRECTORY_SEPARATOR . 'EditView.php';
+        
+        $this->view->show('blog/edit.twig.php', ['post' => $post[0]]);
     }
 
     public function home()

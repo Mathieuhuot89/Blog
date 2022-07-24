@@ -42,7 +42,6 @@ class CommentController extends Controller
         $comments = new Comment($commentArray[0]);
         $manager->delete($comments);
 
-
     }
 
     public function validate($idcomment)

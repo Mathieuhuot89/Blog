@@ -15,18 +15,18 @@ class UserManager extends PDOConnection
 
         return new User($user);
     }
+
     /**
      * add user
      */
     public function add(User $user){
-        $query = $this->db->prepare('insert into user (username, password, email) values (:usernname, :password, :email)');
+        $query = $this->db->prepare('insert into user (username, password, email) values (:username, :password, :email)');
         $query->execute([
 
             ':username' => $user->getUsername(),
             ':password' => password_hash($user->getPassword(),PASSWORD_BCRYPT),
             ':email' => $user->getEmail(),
         ]);
-
     }
 
     public function edit(User $user){
@@ -71,19 +71,25 @@ class UserManager extends PDOConnection
             ':email' => $login,
 
         ]);
+
         $user = $query->fetch(\PDO::FETCH_ASSOC);
+        
         if (!$user) {
             return false;
         }
+
         $check = password_verify($password, $user['password']);
+
         if (password_needs_rehash($user['password'], PASSWORD_BCRYPT)) {
             $password = password_hash($user['password'], PASSWORD_BCRYPT);
             $req = $this->db->prepare('UPDATE user SET password=? WHERE iduser=?');
             $req->execute(array($password, $user['iduser']));
         }
+
         if($check){
             return true;
         }
+
         return false;
     }
 }

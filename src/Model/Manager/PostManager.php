@@ -17,18 +17,21 @@ class PostManager extends PDOConnection
 
    public function getPost($id)
    {
+      /* Récupère le post en fonction de l'id */
       $query = $this->db->prepare("SELECT * FROM post where idpost = :idpost");
       $query->execute([
          ':idpost'=> $id
          ]
       );
       $post = $query->fetch(\PDO::FETCH_ASSOC);
+      /* Récupère la liste des commentaires en fonction de l'id du post */
       $query = $this->db->prepare("SELECT * FROM comment where post_id = :idpost");
       $query->execute([
          ':idpost'=> $id
          ]
       );
       $comments = $query->fetchAll(\PDO::FETCH_ASSOC);
+      
       return [$post, $comments];
    }
 

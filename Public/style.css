@@ -1,0 +1,74 @@
+.footer {
+    text-align : center ; position : fixed ;
+    bottom : 0 ; width : 100% ;
+    
+}
+
+.logo 
+{ 
+    position: relative; left : 10px; top : 30px; 
+
+}
+
+body {
+    background-color: white !important; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+ }
+
+ .container {
+    max-width: 1320px;
+ }
+
+ .commentaire {
+    border: 1px solid;
+    border-color: rgb(197, 187, 187);
+    margin-bottom: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 4px;
+ }
+
+ .head_post {
+     margin-bottom: 4px;
+ }
+
+ span + span {
+    margin-left: 15px;
+}
+
+.add_comment,.full_content_post {
+    padding: 20px 20px 20px 20px;
+}
+
+.add_new_post {
+    border: 1px solid;
+    border-color: rgb(136, 130, 130);
+    margin-top: 30px;
+}
+
+footer {
+    padding-top:70px;
+}
+
+.login {
+    text-align: center;
+    vertical-align: center;
+}
+
+.div_contact {
+    text-align: left;
+}
+
+.blog {
+    margin-top: 50px;
+}
