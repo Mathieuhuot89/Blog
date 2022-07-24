@@ -11,5 +11,7 @@
             "email": "mathieuu@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.3"
+    }
 }

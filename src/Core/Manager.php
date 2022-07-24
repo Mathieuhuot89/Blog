@@ -2,7 +2,7 @@
 
 namespace Blog\Core;
 
-abstract class Manager
+abstract class Manager extends PDOConnection
 {
-
+    
 }
